@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: birthday-greetings
+    ports:
+      - "3000:3000"
+    environment:
+      SMTP_HOST: smtps.aruba.it
+      SMTP_PORT: 465
+      SMTP_SECURE: 1
+      SMTP_USER: hello@palmabit.com
+      SMTP_PASSWORD: spero.una.buona
+      EMPLOYEES_FILE_PATH: employees.csv
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
